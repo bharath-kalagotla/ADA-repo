@@ -11,10 +11,10 @@
       ]
     ]
   },
-  "urls": [
-    "http://localhost:4200/recipes",
-    "http://localhost:4200/shopping-list",
-    "http://localhost:4200/recipes/new",
-    "http://localhost:4200/recipes/*"
-  ]
+    "urls": [
+      "http://localhost:4200/recipes",
+      "http://localhost:4200/shopping-list",
+      "http://localhost:4200/recipes/new",
+      "http://localhost:4200/recipes/*"
+    ]
 }

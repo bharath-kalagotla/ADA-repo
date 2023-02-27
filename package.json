@@ -8,7 +8,6 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:accessibility": "pa11y-ci --config .pa11y-ci.json",
-    "dev": "concurrently \"npm start\" \"sleep 20 && npm run test:accessibility\"",
     "start-dev": "concurrently \"npm start\" \"sleep 20 && sh pa11y.sh\""
   },
   "private": true,
