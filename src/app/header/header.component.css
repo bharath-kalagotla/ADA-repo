@@ -1,0 +1,11 @@
+.navbar-default .navbar-nav>li>a {
+  color: #686868;
+}
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover {
+  color: #686868;
+}
+.navbar-default .navbar-brand {
+  color: #686868;
+}
