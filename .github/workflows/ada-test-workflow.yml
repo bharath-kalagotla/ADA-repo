@@ -21,6 +21,7 @@ jobs:
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
+      - name: Start Server
         run: npm start & npx wait-on http://localhost:4200
       - name: Test Accessibility
         id: run-ada-tests
