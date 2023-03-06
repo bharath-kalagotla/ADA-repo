@@ -9,7 +9,6 @@
     "test": "ng test --watch=false",
     "lint": "ng lint",
     "accessibility": "pa11y-ci --config .pa11y-ci.json",
-    "accessiblity-test": "concurrently \"npm start --browsers ChromeHeadless\" \"sleep 20 && sh pa11y.sh\"",
     "start-dev": "concurrently \"npm start\" \"sleep 20 && sh pa11y.sh\""
   },
   "private": true,
