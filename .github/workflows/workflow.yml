@@ -2,6 +2,7 @@ name: Website Deployment
 on:
   pull_request:
     types: [opened, synchronize]
+  workflow_dispatch:
 jobs:
   lint:
     runs-on: ubuntu-latest
