@@ -1,8 +1,13 @@
-name: Website Deployment
+name: CI/CD Workflow
 on:
   pull_request:
     types: [opened, synchronize]
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true,
+        default: 'staging'
 jobs:
   lint:
     runs-on: ubuntu-latest
