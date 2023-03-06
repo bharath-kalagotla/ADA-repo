@@ -1,10 +1,20 @@
 {
   "defaults": {
-    "standard": "WCAG2AA"
+    "standard": "WCAG2AA",
+    "reporters": [
+      "cli",
+      [
+        "pa11y-ci-reporter-html",
+        {
+          "destination": "./reports"
+        }
+      ]
+    ]
   },
     "urls": [
-      "https://pa11y.org/",
-      "https://intel.com/content/www/us/en/products/overview.html",
-      "https://www.intel.com/content/www/us/en/products/details/processors/xeon/scalable.html"
+      "http://localhost:4200/recipes",
+      "http://localhost:4200/shopping-list",
+      "http://localhost:4200/recipes/new",
+      "http://localhost:4200/recipes/*"
     ]
 }
