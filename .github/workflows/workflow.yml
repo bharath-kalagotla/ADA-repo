@@ -2,7 +2,7 @@ name: Website Deployment
 on:
   push:
     branches:
-      - 'feature/**'
+      - master
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -35,7 +35,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Test code
-        id: run-testss
+        id: run-tests
         run: npm run test
       - name: Upload test report
         if: failure() && steps.run-tests.outcome == 'failure'
