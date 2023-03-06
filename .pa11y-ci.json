@@ -1,15 +1,6 @@
 {
   "defaults": {
-    "standard": "WCAG2AA",
-    "reporters": [
-      "cli",
-      [
-        "pa11y-ci-reporter-html",
-        {
-          "destination": "./reports"
-        }
-      ]
-    ]
+    "standard": "WCAG2AA"
   },
     "urls": [
       "http://localhost:4200/recipes",
