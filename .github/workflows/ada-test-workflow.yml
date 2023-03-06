@@ -23,7 +23,7 @@ jobs:
         run: npm ci
       - name: Test Accessibility
         id: run-ada-tests
-        run: npm run start-dev
+        run: npm run accessiblity-test
       - name: Upload test report
         if: failure() && steps.run-ada-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
