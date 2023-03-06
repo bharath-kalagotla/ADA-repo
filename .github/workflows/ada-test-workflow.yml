@@ -23,7 +23,7 @@ jobs:
         run: npm ci
       - name: Test Accessibility
         id: run-ada-tests
-        run: npm run build && npm run accessibility
+        run: npm run build --browsers=ChromeHeadless && npm run accessibility
       - name: Upload test report
         if: failure() && steps.run-ada-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
