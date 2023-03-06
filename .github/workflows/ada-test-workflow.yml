@@ -1,10 +1,9 @@
-name: CI/CD Workflow
+name: ADA Workflow
 on:
   pull_request:
     types: [opened, synchronize]
 jobs:
   build:
-    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -67,7 +66,7 @@ jobs:
       - name: Deploy
         run: echo "Deploying..."
   report:
-    needs: [lint, deploy]
+    needs: [deploy]
     if: failure()
     runs-on: ubuntu-latest
     steps:
