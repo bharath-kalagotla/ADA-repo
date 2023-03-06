@@ -2,7 +2,8 @@ name: Website Deployment
 on:
   push:
     branches:
-      - feature/test-ada-2
+      - 'master'
+      - 'feature/**''
 jobs:
   lint:
     runs-on: ubuntu-latest
