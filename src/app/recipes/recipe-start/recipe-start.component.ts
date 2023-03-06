@@ -9,7 +9,8 @@ export class RecipeStartComponent implements OnInit {
 
   constructor() { }
 
-  // ngOnInit() {
-  // }
+  ngOnInit() {
+    console.log('recipes start component loaded');
+  }
 
 }
