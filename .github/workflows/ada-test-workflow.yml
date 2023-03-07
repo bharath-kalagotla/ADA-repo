@@ -32,7 +32,8 @@ jobs:
         id: setup-chrome
       - name: Launch Browser
         run: |
-        echo Installed chromium version: ${{ steps.setup-chrome.outputs.chrome-version }}
+        echo Installed chromium version: 'Browser'
+        chrome --version
       - name: Test Accessibility
         id: run-ada-tests
         run: npx pa11y-ci --config .pa11yci.js
