@@ -14,18 +14,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '19.x'
-      - name: Cache dependenciess
-        id: cache
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Test Accessibility
-        id: run-ada-tests
-        run: pa11y-ci https://pa11y.org/
+        id: run-ada-testss
+        run: npm run test-ada
 
       - name: Upload test report
         if: failure() && steps.run-ada-tests.outcome == 'failure'

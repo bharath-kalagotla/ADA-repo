@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false",
     "lint": "ng lint",
+    "test-ada": "pa11y-ci https://pa11y.org/",
     "accessibility": "pa11y-ci --config .pa11y-ci.json",
     "start-dev": "concurrently \"npm start\" \"sleep 20 && sh pa11y.sh\""
   },
