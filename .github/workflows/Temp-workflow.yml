@@ -22,10 +22,10 @@ jobs:
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: npm install
       - name: Test Accessibility
         id: run-ada-tests
-        run: pa11y-ci --config .pa11y-ci.json
+        run: npm run pa11y-ci https://codito.in/xvfb-in-github-action/
       - name: Upload test report
         if: failure() && steps.run-ada-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
