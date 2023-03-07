@@ -27,6 +27,12 @@ jobs:
         run: npm run build
       - name: Setup Chrome Browser
         uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: beta
+        id: setup-chrome
+        run: |
+        echo Installed chromium version: ${{ steps.setup-chrome.outputs.chrome-version }}
+        chrome --version
       - name: Test Accessibility
         id: run-ada-tests
         run: npx pa11y-ci --config .pa11yci.js
