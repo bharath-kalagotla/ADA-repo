@@ -2,24 +2,34 @@ name: ADA Workflow
 on:
   pull_request:
     types: [opened, synchronize]
+  workflow_dispatch:
+
 jobs:
   accessibility:
     runs-on: ubuntu-latest
-    env:
-      PORT: 8080
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: Setup Node.js environment
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '19.x'
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
+      - name: Build Project
+        run: npm run build
+      - name: Launch Chrome Browser
+        uses: puppeteer/action-launch-chrome@v1
       - name: Test Accessibility
-        id: run-ada-testss
-        run: npm run test-ada
-
+        id: run-ada-tests
+        run: npx pa11y-ci --config .pa11yci.js
       - name: Upload test report
         if: failure() && steps.run-ada-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
