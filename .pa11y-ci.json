@@ -1,6 +1,15 @@
 {
   "defaults": {
-    "standard": "WCAG2AA"
+    "standard": "WCAG2AA",
+    "reporters": [
+      "cli",
+      [
+        "pa11y-ci-reporter-html",
+        {
+          "destination": "./reports"
+        }
+      ]
+    ]
   },
     "urls": [
       "http://127.0.0.1:4200/shopping-list",
