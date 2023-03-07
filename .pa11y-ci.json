@@ -3,9 +3,9 @@
     "standard": "WCAG2AA"
   },
     "urls": [
-      "http://127.0.0.1:${process.env.PORT}/recipes",
-      "http://127.0.0.1:${process.env.PORT}/shopping-list",
-      "http://127.0.0.1:${process.env.PORT}/recipes/new",
-      "http://127.0.0.1:${process.env.PORT}/recipes/*"
+      "http://127.0.0.1:4200/shopping-list",
+      "http://127.0.0.1:4200/recipes",
+      "http://127.0.0.1:4200/recipes/new",
+      "http://127.0.0.1:4200/recipes/*"
     ]
 }
