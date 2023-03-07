@@ -25,7 +25,8 @@ jobs:
         run: npm ci
       - name: Test Accessibility
         id: run-ada-tests
-        run: npm start & npx wait-on http://127.0.0.1:$PORT & npm run accessibility
+        run: pa11y-ci https://pa11y.org/
+
       - name: Upload test report
         if: failure() && steps.run-ada-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
