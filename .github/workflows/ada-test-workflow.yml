@@ -8,6 +8,13 @@ jobs:
   accessibility:
     runs-on: ubuntu-latest
     steps:
+      - uses: browser-actions/setup-chrome@v1
+      with:
+        chrome-version: beta
+      id: setup-chrome
+      - run: |
+        echo Installed chromium version: ${{ steps.setup-chrome.outputs.chrome-version }}
+        chrome --version
       - name: Get code
         uses: actions/checkout@v3
       - name: Setup Node.js
@@ -25,14 +32,6 @@ jobs:
         run: npm ci
       - name: Build Project
         run: npm run build
-      - name: Setup Chrome Browser
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: beta
-        id: setup-chrome
-        run: |
-        echo Installed chromium version: ${{ steps.setup-chrome.outputs.chrome-version }}
-        chrome --version
       - name: Test Accessibility
         id: run-ada-tests
         run: npx pa11y-ci --config .pa11yci.js
