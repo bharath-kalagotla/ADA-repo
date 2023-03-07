@@ -25,7 +25,7 @@ jobs:
         run: npm ci
       - name: Test Accessibility
         id: run-ada-tests
-        run: pa11y-ci https://codito.in/xvfb-in-github-action/
+        run: pa11y https://codito.in/xvfb-in-github-action/
       - name: Upload test report
         if: failure() && steps.run-ada-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
