@@ -5,6 +5,8 @@ on:
 jobs:
   accessibility:
     runs-on: ubuntu-latest
+    env:
+      PORT: 8080
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -23,7 +25,7 @@ jobs:
         run: npm ci
       - name: Test Accessibility
         id: run-ada-tests
-        run: npm run build --browsers=ChromeHeadless && npm run accessibility
+        run: npm start & npx wait-on http://127.0.0.1:$PORT & npm run accessibility
       - name: Upload test report
         if: failure() && steps.run-ada-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
