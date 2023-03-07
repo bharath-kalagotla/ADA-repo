@@ -28,10 +28,10 @@ jobs:
       - name: Run headless test
         uses: GabrielBB/xvfb-action@v1
         with:
-          run: npm run test-ada
+          run: pa11y-ci https://pa11y.org/
       - name: Test Accessibility
         id: run-ada-tests
-        run: npx pa11y-ci --config .pa11yci.js
+        run: npx pa11y-ci --config .pa11y-ci.js
       - name: Upload test report
         if: failure() && steps.run-ada-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
