@@ -26,7 +26,7 @@ jobs:
       - name: Run headless test
         uses: GabrielBB/xvfb-action@v1
         with:
-          run: npm run accessibility-test
+          run: npm run accessibility
       - name: Test Accessibility
         id: run-ada-tests
         run: npm run accessibility-test
