@@ -23,13 +23,6 @@ jobs:
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
-      - name: Install jekyll site dependencies.
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.0
-          bundler-cache: true
-      - name: Start up jekyll server.
-        run: npm run start-detached
       - name: Test Accessibility
         id: run-ada-tests
         run: npm run accessibility
