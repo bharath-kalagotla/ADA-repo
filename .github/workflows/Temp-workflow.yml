@@ -14,11 +14,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '19.x'
-      - name: Install jekyll site dependencies
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7.2
-          bundler-cache: true
       - name: Cache dependencies
         id: cache
         uses: actions/cache@v3
@@ -28,8 +23,10 @@ jobs:
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
-      - name: Start up jekyll server
-        run: npm run start-detached
+      - name: install chrome
+        run: sudo apt-get install chromium-browser
+      - name: which chrome
+        run: which chromium-browser
       - name: Test Accessibility
         id: run-ada-tests
         run: npm run accessibility-test
