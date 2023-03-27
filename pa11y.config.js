@@ -16,7 +16,6 @@ module.exports = {
   puppeteer_settings: {
     headless: true,
     ignoreDefaultArgs: ["--disable-extensions"],
-    args: ["--no-sandbox"],
-    executablePath: "chrome.exe"
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
   }
 };
