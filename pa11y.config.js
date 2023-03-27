@@ -1,5 +1,5 @@
 module.exports = {
-  launch_url: "https://www.saucedemo.com",
+  launch_url: "http://127.0.0.1:4200",
   src_folders: "ada-tests",
   reports_path: "reports",
   reporter: ["json", "html"],
@@ -15,6 +15,6 @@ module.exports = {
   },
   puppeteer_settings: {
     headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    executablePath: '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
   }
 };
