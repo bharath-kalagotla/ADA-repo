@@ -2,7 +2,7 @@ module.exports = {
   launch_url: "http://127.0.0.1:4200",
   src_folders: "ada-tests",
   reports_path: "reports",
-  reporter: ["json", "html"],
+  reporter: ["json","html"],
   test_settings: {
     runners: [
       'axe',
@@ -15,7 +15,9 @@ module.exports = {
   },
   puppeteer_settings: {
     headless:false,
-    executablePath: '/usr/bin/chromium-browser',
+    chromeLaunchConfig: {
+      args: ['--no-sandbox']
+    },
     ignoreDefaultArgs: ['--disable-extensions']
   }
 };

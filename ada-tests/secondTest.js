@@ -3,6 +3,6 @@ require('dotenv').config({
 });
 
 module.exports = {
-  url: `${process.env.BASE_URL}/`,
+  url: `${process.env.BASE_URL}/shopping-list`,
   actions: []
 }
