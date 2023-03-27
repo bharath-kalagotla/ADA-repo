@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "runAllTest": "runAccessibility",
     "runSingleTest": "runAccessibility --test ada-tests/firstTest.js",
-    "startLocal": "concurrently \"npm start\" \"npx wait-on ${process.env.BASE_URL} && npm run runAllTest\"",
+    "startLocal": "concurrently \"npm start\" \"npx wait-on %BASE_URL% && npm run runAllTest\"",
     "pa11y-ci:home": "pa11y-ci http://127.0.0.1:4000",
     "start-detached": "bundle exec jekyll serve --detach",
     "accessibility": "pa11y-ci --config .pa11y-ci.json",
