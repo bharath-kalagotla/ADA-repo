@@ -1,5 +1,5 @@
 module.exports = {
-  launch_url: "http://127.0.0.1:4200",
+  launch_url: "https://www.saucedemo.com",
   src_folders: "ada-tests",
   reports_path: "reports",
   reporter: ["json", "html"],
