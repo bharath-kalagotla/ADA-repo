@@ -8,7 +8,7 @@ module.exports = {
       'axe',
       'htmlcs'
     ],
-    standard: 'WCAG2A',
+    standard: 'WCAG2AA',
     timeout: 120000,
     includeNotices: true,
     includeWarnings: true
