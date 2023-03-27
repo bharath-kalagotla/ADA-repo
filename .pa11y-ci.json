@@ -2,7 +2,8 @@
   "defaults": {
     "standard": "WCAG2AA",
     "chromeLaunchConfig": {
-      "args": ["--no-sandbox"]
+      "executablePath": "/usr/bin/chromium-browser",
+      "ignoreDefaultArgs": "['--disable-extensions']"
     },
     "reporters": [
       "cli",
