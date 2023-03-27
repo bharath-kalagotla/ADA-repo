@@ -14,7 +14,9 @@ module.exports = {
     includeWarnings: true
   },
   puppeteer_settings: {
-    headless: false,
-    executablePath: '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+    headless: true,
+    ignoreDefaultArgs: ["--disable-extensions"],
+    args: ["--no-sandbox"],
+    executablePath: "chrome.exe"
   }
 };
