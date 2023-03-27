@@ -17,9 +17,10 @@
     ]
   },
     "urls": [
-      "http://localhost:4200/recipes",
-      "http://localhost:4200/shopping-list",
-      "http://localhost:4200/recipes/new",
-      "http://localhost:4200/recipes/*"
+      "https://github.com/marketplace/actions/setup-chromedriver",
+      "http://127.0.0.1:9515/recipes",
+      "http://127.0.0.1:9515/shopping-list",
+      "http://127.0.0.1:9515/recipes/new",
+      "http://127.0.0.1:9515/recipes/*"
     ]
 }
