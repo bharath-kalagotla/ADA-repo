@@ -16,6 +16,6 @@ module.exports = {
   puppeteer_settings: {
     headless: true,
     ignoreDefaultArgs: ["--disable-extensions"],
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: ['--no-sandbox']
   }
 };
