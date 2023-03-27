@@ -14,7 +14,7 @@ module.exports = {
     includeWarnings: true
   },
   puppeteer_settings: {
-    headless: false,
+    headless: true,
     executablePath: '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
   }
 };
