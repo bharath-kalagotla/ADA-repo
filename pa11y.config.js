@@ -15,6 +15,7 @@ module.exports = {
   },
   puppeteer_settings: {
     headless:false,
-    args: ["--no-sandbox"]
+    executablePath: '/usr/bin/chromium-browser',
+    ignoreDefaultArgs: ['--disable-extensions']
   }
 };
