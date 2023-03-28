@@ -18,9 +18,9 @@
     ]
   },
   "urls": [
-    "http://127.0.0.1:4000/shopping-list",
-    "http://127.0.0.1:4000/recipes",
-    "http://127.0.0.1:4000//recipes/new",
-    "http://127.0.0.1:4000/recipes/*"
+    "http://127.0.0.1/shopping-list",
+    "http://127.0.0.1/recipes",
+    "http://127.0.0.1/recipes/new",
+    "http://127.0.0.1/recipes/*"
   ]
 }

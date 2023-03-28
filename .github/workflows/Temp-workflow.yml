@@ -7,6 +7,8 @@ on:
 jobs:
   accessibility:
     runs-on: ubuntu-latest
+    env:
+      PORT: 4000
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -41,9 +43,11 @@ jobs:
         run: npm install
       - name: Start up jekyll server.
         run: npm run start-detached
+      - name: build Code
+        run : npm start & npx wait-on http://127.0.0.1:$PORT
       - name: Test Accessibility
         id: run-ada-tests
-        run: npm run runAccessibility
+        run: npm run accessibility
       - name: Upload test report
         if: failure() && steps.run-ada-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
