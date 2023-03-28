@@ -44,10 +44,10 @@ jobs:
       - name: Start up jekyll server.
         run: npm run start-detached
       - name: build Code
-        run : npm start & npx wait-on http://127.0.0.1:$PORT
+        run : npm start
       - name: Test Accessibility
         id: run-ada-tests
-        run: npm run accessibility
+        run: npx wait-on http://127.0.0.1:$PORT & npm run accessibility
       - name: Upload test report
         if: failure() && steps.run-ada-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
