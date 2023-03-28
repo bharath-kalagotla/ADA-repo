@@ -21,22 +21,22 @@ jobs:
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "2.6"
-      - name: Install Ruby Dependencies
+      - name: Server
+        run: npm start
+        background: true
+      - name: Wait for Server
         run: |
-          gem install bundler
-          bundle install
-      - name: Build Site
-        run: |
-          JEKYLL_ENV=production bundle exec jekyll build
-      - name: Start up jekyll server
-        run: bundle exec jekyll serve &
+          until $(curl --output /dev/null --silent --head --fail http://127.0.0.4000); do
+            print '.'
+            sleep 1
+          done
+        timeout-minutes: 5
       - name: Test Accessibility
         id: run-ada-tests
-        run: npm run accessibility-test
+        run: npm run accessibility
+      - name: End ADA
+        run: |
+          echo "End ADA"
   deploy:
     needs: accessibility
     runs-on: ubuntu-latest
