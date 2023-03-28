@@ -36,11 +36,11 @@ jobs:
       - name: Build Site
         run: |
           JEKYLL_ENV=production bundle exec jekyll build
-      - name: Start up jekyll server
-        run: bundle exec jekyll serve
       - name: Build code
         run: |
           npm run build
+      - name: Start up jekyll server
+        run: bundle exec jekyll serve &
       - name: Wait for Server
         run: |
           sleep 30
