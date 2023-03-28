@@ -33,9 +33,9 @@ jobs:
         run: |
           JEKYLL_ENV=production bundle exec jekyll build
       - name: Start up jekyll server
-        run: npm start
+        run: bundle exec jekyll serve &
       - name: Wait for server
-        run: npx wait-on http://127.0.0.1:4000 &
+        run: npm start & npx wait-on http://127.0.0.1:4000 &
       - name: Test Accessibility
         id: run-ada-tests
         run: npm run accessibility 2>&1 | tee pa11y_output.txt
