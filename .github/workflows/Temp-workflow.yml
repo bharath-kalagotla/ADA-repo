@@ -38,6 +38,8 @@ jobs:
         run: |
           sleep 10
           npm run accessibility-test
+      - name: Stop server
+        run: pkill -f "ng serve"
       - name: Check for pa11y failures
         if: failure() && steps.run-ada-tests.outcome == 'failure'
         run: |
