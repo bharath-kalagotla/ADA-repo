@@ -1,17 +1,26 @@
 {
   "defaults": {
     "standard": "WCAG2AA",
+    "timeout": 50000,
     "chromeLaunchConfig": {
       "args": [
-          "--no-sandbox"
+        "--no-sandbox"
       ]
-    }
-  },
-    "urls": [
-      "https://github.com/marketplace/actions/setup-chromedriver",
-      "http://127.0.0.1:4000/recipes",
-      "http://127.0.0.1:4000/shopping-list",
-      "http://127.0.0.1:4000/recipes/new",
-      "http://127.0.0.1:4000/recipes/*"
+    },
+    "reporters": [
+      "cli",
+      [
+        "pa11y-ci-reporter-html",
+        {
+          "destination": "./reports"
+        }
+      ]
     ]
+  },
+  "urls": [
+    "http://127.0.0.1:4000/shopping-list",
+    "http://127.0.0.1:4000/recipes",
+    "http://127.0.0.1:4000//recipes/new",
+    "http://127.0.0.1:4000/recipes/*"
+  ]
 }
