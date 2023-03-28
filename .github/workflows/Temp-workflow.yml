@@ -25,24 +25,19 @@ jobs:
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
         with:
-          ruby-version: "2.6"
-      - name: Install Ruby Dependencies
-        run: |
-          gem install bundler
-          bundle install
-      - name: Build code
-        run: |
-          npm run build
-      - name: Start up jekyll server
-        run: bundle exec jekyll serve &
+          chrome-version: beta
+          id: setup-chrome
+          run: |
+            echo Installed chromium version: ${{ steps.setup-chrome.outputs.chrome-version }}
+            chrome --version
       - name: Test Accessibility
         id: run-ada-tests
         run: |
           sleep 30
-          npm run accessibility
+          npm run accessibility-test
       - name: End ADA
         run: |
           echo "End ADA"
