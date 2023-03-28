@@ -36,8 +36,8 @@ jobs:
       - name: Build code
         run: |
           npm run build
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
         with:
           name: deploy_dist
           path: dist
