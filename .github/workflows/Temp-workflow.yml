@@ -12,42 +12,23 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '19.x'
-      - name: Set up Ruby 2.6
+      - name: Set up Ruby
         uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "2.6"
-      - name: Gems setup
-        uses: actions/cache@v2
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-      - name: Install Bundler
+      - name: Install Dependencies
         run: |
-            gem install bundler
-            bundle config path vendor/bundle
-            bundle install --jobs 4 --retry 3
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install
-      - name: Start up jekyll server.
-        run: npm run start-detached
+          gem install bundler
+          bundle install
+      - name: Build Site
+        run: |
+          JEKYLL_ENV=production bundle exec jekyll build
+      - name: Start up jekyll server
+        run: bundle exec jekyll serve &
+      - name: Wait for server
+        run: sleep 10
       - name: Test Accessibility
         id: run-ada-tests
-        run: npm run accessibility-test
+        run: npm run accessibility
       - name: Upload test report
-        if: failure() && steps.run-ada-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: ada-test-report
