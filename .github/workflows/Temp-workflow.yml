@@ -35,7 +35,7 @@ jobs:
       - name: Start up jekyll server
         run: bundle exec jekyll serve &
       - name: Wait for server
-        run: npx wait-on http://127.0.0.1:4000
+        run: sleep 20
       - name: Test Accessibility
         id: run-ada-tests
         run: npm run accessibility
