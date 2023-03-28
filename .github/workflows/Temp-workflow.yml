@@ -50,7 +50,6 @@ jobs:
           message: '<details><summary>Pa11y testing results</summary>
             ```${{ steps.pa11y_output.outputs.content }}```
             </details>'
-        /details>'
       - name: Check for pa11y failures.
         if: contains(steps.pa11y_output.outputs.content, 'errno 2')
         run: |
