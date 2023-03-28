@@ -43,7 +43,7 @@ jobs:
         run: npm run start-detached
       - name: Test Accessibility
         id: run-ada-tests
-        run: npm run accessibility-test
+        run: npm run runAccessibility
       - name: Upload test report
         if: failure() && steps.run-ada-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
