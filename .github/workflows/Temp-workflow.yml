@@ -50,6 +50,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: feature/test-ada-workflow
           FOLDER: deploy_dist/first-app
       - name: Start up jekyll server
         run: bundle exec jekyll serve &
