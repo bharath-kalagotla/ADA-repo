@@ -47,7 +47,7 @@ jobs:
         run : npm start
       - name: Test Accessibility
         id: run-ada-tests
-        run: npx wait-on http://127.0.0.1:$PORT & npm run accessibility
+        run: npx wait-on http://127.0.0.1:4000 & npm run accessibility
       - name: Upload test report
         if: failure() && steps.run-ada-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
