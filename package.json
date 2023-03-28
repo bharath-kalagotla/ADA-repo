@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false",
     "lint": "ng lint",
-    "start-detached": "bundle exec jekyll serve --detach",
+    "start-detached": "bundle add webrick && bundle exec jekyll serve --detach",
     "accessibility": "pa11y-ci --config .pa11y-ci.json",
     "accessibility-test": "concurrently \"npm start\" \"npx wait-on http://127.0.0.1:4200 && pa11y-ci --config .pa11y-ci.json\"",
     "start-dev": "concurrently \"npm start\" \"npx wait-on http://127.0.0.1:4200 && sh pa11y.sh\""
