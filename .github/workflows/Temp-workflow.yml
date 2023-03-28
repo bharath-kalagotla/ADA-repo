@@ -14,26 +14,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '19.x'
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v3
+      - name: Install
+        uses: ianwalter/playwright-container@43940dfa7d309fe3569b9df407ae9e84dcbf2e7f
         with:
-          path: node_modules
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
-      - name: setup Chrome
-        uses: nanasess/setup-chromedriver@v1
-        with:
-          chromedriver-version: '88.0.4324.96'
-      - name: Launch Chrome
-        run: |
-          export DISPLAY=:99
-          chromedriver --url-base=/wd/hub &
-          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
+          args: npm ci
       - name: which chrome
         run: which chromium-browser
+      - name: Test ADA
+        uses: ianwalter/playwright-container@43940dfa7d309fe3569b9df407ae9e84dcbf2e7f
+        with:
+          args: npm run accessibility-test
       - name: Test Accessibility
         id: run-ada-tests
         run: npm run accessibility-test
