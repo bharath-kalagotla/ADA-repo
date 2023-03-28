@@ -46,12 +46,14 @@ jobs:
         with:
           name: deploy_dist
           path: dist
+      - name: Generate deployment package
+        run: zip -r deploy_dist.zip ./dist/*
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: feature/test-ada-workflow
-          FOLDER: deploy_dist/first-app
+          FOLDER: dist/first-app
       - name: Start up jekyll server
         run: bundle exec jekyll serve &
       - name: Test Accessibility
