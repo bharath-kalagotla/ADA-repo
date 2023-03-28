@@ -37,7 +37,7 @@ jobs:
         run: |
           JEKYLL_ENV=production bundle exec jekyll build
       - name: Start up jekyll server
-        run: bundle exec jekyll serve &
+        run: bundle exec jekyll serve
       - name: Build code
         run: |
           npm run build
