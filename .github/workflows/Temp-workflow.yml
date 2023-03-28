@@ -35,7 +35,9 @@ jobs:
             chrome --version
       - name: Test Accessibility
         id: run-ada-tests
-        run: npm run accessibility-test
+        run: |
+          sleep 10
+          npm run accessibility-test
       - name: End ADA
         run: |
           echo "End ADA"
