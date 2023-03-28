@@ -12,6 +12,10 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Cache dependencies
         id: cache
         uses: actions/cache@v3
@@ -29,22 +33,16 @@ jobs:
         run: |
           gem install bundler
           bundle install
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
       - name: Build code
         run: |
           npm run build
       - name: Start up jekyll server
         run: bundle exec jekyll serve &
-      - name: Wait for Server
-        run: |
-          sleep 30
-        timeout-minutes: 5
       - name: Test Accessibility
         id: run-ada-tests
-        run: npm run accessibility
+        run: |
+          sleep 30
+          npm run accessibility
       - name: End ADA
         run: |
           echo "End ADA"
