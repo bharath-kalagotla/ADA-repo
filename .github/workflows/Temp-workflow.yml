@@ -14,10 +14,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '19.x'
-      - name: Set up Ruby 3.0
+      - name: Set up Ruby 2.6
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.0"
+          ruby-version: "2.6"
       - name: Gems setup
         uses: actions/cache@v2
         with:
