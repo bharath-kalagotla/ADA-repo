@@ -46,6 +46,11 @@ jobs:
         with:
           name: deploy_dist
           path: dist
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FOLDER: deploy_dist/first-app
       - name: Start up jekyll server
         run: bundle exec jekyll serve &
       - name: Test Accessibility
