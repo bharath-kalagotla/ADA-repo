@@ -19,19 +19,19 @@
   },
   "urls": [
     {
-      "url": "http://127.0.0.1:4200/shopping-list",
+      "url": "http://127.0.0.1:4000/shopping-list",
       "timeout": 50000
     },
     {
-      "url": "http://127.0.0.1:4200/recipes",
+      "url": "http://127.0.0.1:4000/recipes",
       "timeout": 50000
     },
     {
-      "url": "http://127.0.0.1:4200/recipes/new",
+      "url": "http://127.0.0.1:4000/recipes/new",
       "timeout": 50000
     },
     {
-      "url": "http://127.0.0.1:4200/recipes/*",
+      "url": "http://127.0.0.1:4000/recipes/*",
       "timeout": 50000
     }
   ]
