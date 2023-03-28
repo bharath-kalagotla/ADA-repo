@@ -14,19 +14,25 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '19.x'
-      - name: Install
-        uses: ianwalter/playwright-container@43940dfa7d309fe3569b9df407ae9e84dcbf2e7f
+      - name: Install jekyll site dependencies.
+        uses: ruby/setup-ruby@v1
         with:
-          args: npm ci
-      - name: which chrome
-        run: which chromium-browser
-      - name: Test ADA
-        uses: ianwalter/playwright-container@43940dfa7d309fe3569b9df407ae9e84dcbf2e7f
+          ruby-version: 2.6
+          bundler-cache: true
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
         with:
-          args: npm run accessibility-test
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
+      - name: Start up jekyll server.
+        run: npm run start-detached
       - name: Test Accessibility
         id: run-ada-tests
-        run: npm run accessibility-test
+        run: npm run accessibility-tests
       - name: Upload test report
         if: failure() && steps.run-ada-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
