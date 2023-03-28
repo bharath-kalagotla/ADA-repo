@@ -14,6 +14,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '19.x'
+      - name: testRuby
+        run: |
+          sudo apt-get update
+          sudo apt-get install ruby-full
+          sudo gem install jekyll
+          jekyll -v
+      - name: jekyll version
+        run: jekyll -v
       - name: Set up Ruby 3.0
         uses: ruby/setup-ruby@v1
         with:
