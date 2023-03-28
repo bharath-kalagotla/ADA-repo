@@ -43,11 +43,11 @@ jobs:
         uses: juliangruber/read-file-action@v1
         with:
           path: ./pa11y_output.txt
-      - name: Comment on pull request
-        uses: thollander/actions-comment-pull-request@master
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          message: '<details><summary>Pa11y testing results</summary>
+          message: |
+            '<details><summary>Pa11y testing results</summary>
             ```${{ steps.pa11y_output.outputs.content }}```
             </details>'
       - name: Check for pa11y failures.
