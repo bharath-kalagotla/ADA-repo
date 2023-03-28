@@ -36,6 +36,11 @@ jobs:
       - name: Build code
         run: |
           npm run build
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: deploy_dist
+          path: dist
       - name: Start up jekyll server
         run: bundle exec jekyll serve &
       - name: Test Accessibility
