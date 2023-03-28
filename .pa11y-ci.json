@@ -1,6 +1,12 @@
 {
   "defaults": {
     "standard": "WCAG2AA",
+    "timeout": 50000,
+    "chromeLaunchConfig": {
+      "args": [
+        "--no-sandbox"
+      ]
+    },
     "reporters": [
       "cli",
       [
