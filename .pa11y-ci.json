@@ -2,7 +2,7 @@
   "defaults": {
     "standard": "WCAG2AA",
     "timeout": 50000,
-    "threshold": 10,
+    "threshold": 2,
     "runners": [
       "axe"
     ],
@@ -23,8 +23,7 @@
   },
   "urls": [
     {
-      "url": "http://127.0.0.1:4000/shopping-list",
-      "threshold": 2
+      "url": "http://127.0.0.1:4000/shopping-list"
     },
     {
       "url": "http://127.0.0.1:4000/recipes"
