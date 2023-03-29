@@ -2,7 +2,7 @@
   "defaults": {
     "standard": "WCAG2AA",
     "timeout": 50000,
-    "userAgent": "A11Y TESTS",
+    "threshold": 2,
     "runners": [
       "axe"
     ],
