@@ -33,11 +33,14 @@ jobs:
           run: |
             echo Installed chromium version: ${{ steps.setup-chrome.outputs.chrome-version }}
             chrome --version
-      - name: Test Accessibility
+      - name: Start Server
+        id: run-ada-tests
+        run: npm start &
+      - name: Test Accessbility
         id: run-ada-tests
         run: |
           sleep 10
-          npm run accessibility-test
+          npm run accessibility
       - name: Generate Accessibility Test Report
         if: always()
         uses: actions/upload-artifact@v3
