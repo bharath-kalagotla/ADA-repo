@@ -37,7 +37,7 @@ jobs:
         id: run-ada-tests
         run: |
           sleep 10
-          npm run start-dev
+          npm run accessibility-test
       - name: Check for pa11y failures
         if: failure() && steps.run-ada-tests.outcome == 'failure'
         run: |
