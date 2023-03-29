@@ -8,11 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false",
     "lint": "ng lint",
-    "accessibility": "pa11y-ci --config .pa11y-ci.json",
-    "accessibility-test": "concurrently --kill-others-on-fail \"npm start\" \"npx wait-on http://127.0.0.1:4000 && pa11y-ci --config .pa11y-ci.json\"",
-    "start-dev": "concurrently \"npm start\" \"npx wait-on http://127.0.0.1:4000 && sh pa11y.sh\"",
-    "kill": "sudo lsof -t -i tcp:4000 | xargs kill -9",
-    "accessibility-local": "concurrently \"npm start\" \"npx wait-on http://localhost:4000 && pa11y-ci --config .pa11y-ci.json\""
+    "accessibility": "set PORT=8000 && pa11y-ci --config .pa11y-ci.json",
+    "accessibility-local": "concurrently --kill-others-on-fail \"npm start\" \"npx wait-on http://127.0.0.1:4000 && pa11y-ci --config .pa11y-ci.json\"",
+    "start-local": "concurrently \"npm start\" \"npx wait-on http://127.0.0.1:4000 && sh pa11y.sh\""
   },
   "private": true,
   "dependencies": {

@@ -26,16 +26,13 @@
       "threshold": 2
     },
     {
-      "url": "http://127.0.0.1:4000/recipes",
-      "timeout": 50000
+      "url": "http://127.0.0.1:4000/recipes"
     },
     {
-      "url": "http://127.0.0.1:4000/recipes/new",
-      "timeout": 50000
+      "url": "http://127.0.0.1:4000/recipes/new"
     },
     {
-      "url": "http://127.0.0.1:4000/recipes/*",
-      "timeout": 50000
+      "url": "http://127.0.0.1:4000/recipes/*"
     }
   ]
 }
