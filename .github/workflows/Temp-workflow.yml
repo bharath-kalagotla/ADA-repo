@@ -34,7 +34,6 @@ jobs:
             echo Installed chromium version: ${{ steps.setup-chrome.outputs.chrome-version }}
             chrome --version
       - name: Start Server
-        id: run-ada-tests
         run: npm start &
       - name: Test Accessbility
         id: run-ada-tests
