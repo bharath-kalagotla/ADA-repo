@@ -23,18 +23,10 @@
   "urls": [
     {
       "url": "http://127.0.0.1:4000/shopping-list",
-      "timeout": 50000
+      "threshold": 2
     },
     {
       "url": "http://127.0.0.1:4000/recipes",
-      "timeout": 50000
-    },
-    {
-      "url": "http://127.0.0.1:4000/recipes/new",
-      "timeout": 50000
-    },
-    {
-      "url": "http://127.0.0.1:4000/recipes/*",
       "timeout": 50000
     }
   ]
