@@ -1,6 +1,16 @@
 {
   "defaults": {
     "standard": "WCAG2AA",
+    "timeout": 50000,
+    "threshold": 2,
+    "runners": [
+      "axe"
+    ],
+    "chromeLaunchConfig": {
+      "args": [
+        "--no-sandbox"
+      ]
+    },
     "reporters": [
       "cli",
       [
@@ -11,10 +21,18 @@
       ]
     ]
   },
-    "urls": [
-      "http://127.0.0.1:4200/shopping-list",
-      "http://127.0.0.1:4200/recipes",
-      "http://127.0.0.1:4200/recipes/new",
-      "http://127.0.0.1:4200/recipes/*"
-    ]
+  "urls": [
+    {
+      "url": "http://127.0.0.1:4000/shopping-list"
+    },
+    {
+      "url": "http://127.0.0.1:4000/recipes"
+    },
+    {
+      "url": "http://127.0.0.1:4000/recipes/new"
+    },
+    {
+      "url": "http://127.0.0.1:4000/recipes/*"
+    }
+  ]
 }
