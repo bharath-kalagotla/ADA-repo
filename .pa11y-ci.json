@@ -2,6 +2,9 @@
   "defaults": {
     "standard": "WCAG2AA",
     "timeout": 50000,
+    "runners": [
+      "axe"
+    ],
     "chromeLaunchConfig": {
       "args": [
         "--no-sandbox"
@@ -24,6 +27,14 @@
     },
     {
       "url": "http://127.0.0.1:4000/recipes",
+      "timeout": 50000
+    },
+    {
+      "url": "http://127.0.0.1:4000/recipes/new",
+      "timeout": 50000
+    },
+    {
+      "url": "http://127.0.0.1:4000/recipes/*",
       "timeout": 50000
     }
   ]
