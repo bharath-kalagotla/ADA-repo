@@ -37,8 +37,7 @@ jobs:
         id: run-ada-tests
         run: |
           sleep 10
-          npm run accessibility-test &
-          npm run kill
+          npm run accessibility-test
       - name: Generate Accessibility Test Report
         if: always()
         uses: actions/upload-artifact@v3
