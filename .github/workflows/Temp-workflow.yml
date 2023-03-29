@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
-      - name: Setup Chrome Browser
+      - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: beta
@@ -38,15 +38,23 @@ jobs:
         run: |
           sleep 10
           npm run accessibility-test
-      - name: Accessbility test status
-        if: failure() && steps.run-ada-tests.outcome == 'failure'
+      - name: Generate Accessibility Test Report
+        if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: ada-test-report
+          name: ADA_Test_Report
           path: reports
-          run: |
-            echo "::error::The site is failing accessibility tests. Please review the comment in the pull request or the pa11y-ci step in the workflow for details."
-            exit 1
+      - name: Accessibility tests failed
+        if: failure() && steps.run-ada-tests.outcome == 'failure'
+        run: |
+          echo "::error::The site is failing accessibility tests. Please review the comment in the pull request or the pa11y-ci step in the workflow for details."
+          exit 1
+      - name: Accessibility tests passed
+        if: success() && steps.run-ada-tests.outcome == 'success'
+        run: |
+          echo "ADA tests passed and no issues found"
+          exit 0
+
   deploy:
     needs: accessibility
     runs-on: ubuntu-latest
