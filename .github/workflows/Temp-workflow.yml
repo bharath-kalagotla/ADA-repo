@@ -56,25 +56,3 @@ jobs:
         run: |
           echo "ADA tests passed and no issues found"
           exit 0
-
-  deploy:
-    needs: accessibility
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: dist-files
-      - name: Output contents
-        run: ls
-      - name: Deploy
-        run: echo "Deploying..."
-  report:
-    needs: [deploy]
-    if: failure()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Output information
-        run: |
-          echo "Something went wrong"
-          echo "${{ toJSON(github) }}"

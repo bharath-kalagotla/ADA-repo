@@ -43,8 +43,60 @@ jobs:
         with:
           name: test-report
           path: test.json
-  build:
+  accessibility:
     needs: test
+    runs-on: ubuntu-latest
+    env:
+      PORT: 4000
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: beta
+          id: setup-chrome
+          run: |
+            echo Installed chromium version: ${{ steps.setup-chrome.outputs.chrome-version }}
+            chrome --version
+      - name: Start Server
+        run: npm start &
+      - name: Test Accessbility
+        id: run-ada-tests
+        run: |
+          sleep 10
+          npm run accessibility
+      - name: Generate Accessibility Test Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ADA_Test_Report
+          path: reports
+      - name: Accessibility tests failed
+        if: failure() && steps.run-ada-tests.outcome == 'failure'
+        run: |
+          echo "::error::The site is failing accessibility tests. Please review the comment in the pull request or the pa11y-ci step in the workflow for details."
+          exit 1
+      - name: Accessibility tests passed
+        if: success() && steps.run-ada-tests.outcome == 'success'
+        run: |
+          echo "ADA tests passed and no issues found"
+          exit 0
+  build:
+    needs: accessibility
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -66,58 +118,8 @@ jobs:
         with:
           name: dist-files
           path: dist
-  accessibility:
-    runs-on: ubuntu-latest
-    env:
-      PORT: 4000
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "2.6"
-      - name: Install Ruby Dependencies
-        run: |
-          gem install bundler
-          bundle install
-      - name: Build code
-        run: |
-          npm run build
-      - name: Start up jekyll server
-        run: bundle exec jekyll serve &
-      - name: Test Accessibility
-        id: run-ada-tests
-        run: |
-          sleep 30
-          npm run accessibility
-      - name: Upload test report
-        if: failure() && steps.run-ada-tests.outcome == 'failure'
-        uses: actions/upload-artifact@v3
-        with:
-          name: ada-test-report
-          path: ada-test.json
-      - name: Upload test report
-        if: failure() && steps.run-ada-tests.outcome == 'failure'
-        uses: actions/upload-artifact@v3
-        with:
-          name: ada-test-report
-          path: ada-test.json
   deploy:
-    needs: accessibility
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Get build artifacts
