@@ -78,7 +78,7 @@ jobs:
         id: run-ada-tests
         run: |
           sleep 10
-          npm run accessibility
+          npm run pa11y
       - name: Generate Accessibility Test Report
         if: always()
         uses: actions/upload-artifact@v3
