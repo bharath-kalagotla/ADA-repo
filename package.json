@@ -3,14 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4000",
+    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false",
+    "lint": "ng lint",
+    "test:accessibility": "concurrently \"npm start\" \"sleep 10 && npm run pa11y || npm run pa11y:report\"",
     "pa11y": "pa11y-ci --config .pa11y-ci.json",
     "pa11y:report": "open reports/index.html",
-    "test:accessibility": "concurrently \"npm start\" \"npx wait-on http://localhost:4000 && npm run pa11y || npm run pa11y:report\"",
-    "lint": "ng lint"
+    "test2": "sdfsdf"
   },
   "private": true,
   "dependencies": {

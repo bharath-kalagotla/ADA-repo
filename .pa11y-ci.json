@@ -22,16 +22,16 @@
   },
   "urls": [
     {
-      "url": "http://127.0.0.1:4000/shopping-list"
+      "url": "http://localhost:4200/shopping-list"
     },
     {
-      "url": "http://127.0.0.1:4000/recipes"
+      "url": "http://localhost:4200/recipes"
     },
     {
-      "url": "http://127.0.0.1:4000/recipes/new"
+      "url": "http://localhost:4200/recipes/new"
     },
     {
-      "url": "http://127.0.0.1:4000/recipes/*"
+      "url": "http://localhost:4200/recipes/*"
     }
   ]
 }
