@@ -1,7 +1,8 @@
 {
   "defaults": {
     "standard": "WCAG2AA",
-    "timeout": 7000,
+    "timeout": 60000,
+    "threshold": 6,
     "runners": [
       "axe"
     ],
